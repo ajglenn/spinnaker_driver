@@ -14,18 +14,6 @@ INFORMATIONAL_VERSION=1.7.0.6
 RELEASE_TYPE_TEXT=Release
 
 echo "This is a script to assist with installation of the Spinnaker SDK.";
-echo "Would you like to continue and install all the Spinnaker SDK packages?";
-echo -n "$MY_YESNO_PROMPT"
-read confirm
-
-if [ $confirm = "n" ] || [ $confirm = "N" ] || [ $confirm = "no" ] || [ $confirm = "No" ]
-then
-    exit 0
-    break
-fi
-
-echo
-
 echo "Installing Spinnaker packages...";
 
 sudo dpkg -i libspinvideoencoder-*.deb
@@ -36,17 +24,6 @@ sudo dpkg -i spinupdate-*.deb
 sudo dpkg -i spinnaker-*.deb
 
 echo "Would you like to add a udev entry to allow access to USB hardware?";
-echo "If this is not ran then your cameras may be only accessible by running Spinnaker as sudo.";
-echo -n "$MY_YESNO_PROMPT"
-read confirm
-
-if [ $confirm = "n" ] || [ $confirm = "N" ] || [ $confirm = "no" ] || [ $confirm = "No" ]
-then
-    echo "Complete";
-    exit 0
-    break
-fi
-
 echo "Launching conf script";
 sudo sh spin-conf
 
